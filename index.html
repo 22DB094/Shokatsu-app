@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>就活掲示板（チャット対応）</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 認証セクション -->
+  <div id="auth-section">
+    <h2>ログインしてください</h2>
+    <input type="text" id="nickname" placeholder="ニックネーム">
+    <input type="email" id="email" placeholder="メールアドレス">
+    <input type="password" id="password" placeholder="パスワード">
+    <button id="register-btn">新規登録</button>
+    <button id="login-btn">ログイン</button>
+    <p id="auth-message" style="color: red;"></p>
+  </div>
+
+  <!-- メイン掲示板 -->
+  <main id="main-content" style="display: none;">
+    <header>
+      <h1>就活体験談シェア</h1>
+      <p>ようこそ、<span id="welcome-name"></span>さん！
+        <button id="logout-btn">ログアウト</button>
+      </p>
+    </header>
+
+    <section id="post-form-section">
+      <h2>企業体験談を投稿</h2>
+      <form id="post-form">
+        <label>業界</label>
+        <select id="industry" required>
+          <option value="">選択してください</option>
+          <option value="IT・通信">IT・通信</option>
+          <option value="メーカー">メーカー</option>
+          <option value="金融">金融</option>
+          <option value="商社">商社</option>
+          <option value="小売・サービス">小売・サービス</option>
+          <option value="公務員・団体職員">公務員・団体職員</option>
+          <option value="その他">その他</option>
+        </select>
+        <label>企業名</label>
+        <input type="text" id="company-name" required>
+        <label>タイトル</label>
+        <input type="text" id="post-title" required>
+        <label>内容</label>
+        <textarea id="post-content" rows="4" required></textarea>
+        <button type="submit">投稿</button>
+      </form>
+    </section>
+
+    <button id="show-chat-list">チャット一覧を表示</button>
+
+    <section id="post-list">
+      <h2>投稿一覧</h2>
+      <div id="posts"></div>
+    </section>
+  </main>
+
+  <!-- チャット相手一覧 -->
+<section id="chat-list-section" style="display: none;">
+  <h2>チャット相手一覧</h2>
+  <div id="chat-list"></div>
+  <button id="chat-list-close">閉じる</button>
+</section>
+
+
+  <!-- チャットページ -->
+  <section id="chat-page" style="display: none;">
+    <h2>チャット</h2>
+    <div id="chat-box" class="chat-box"></div>
+    <input type="text" id="chat-message" placeholder="メッセージを入力" />
+    <button id="send-chat">送信</button>
+    <button id="back-btn">戻る</button>
+  </section>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
